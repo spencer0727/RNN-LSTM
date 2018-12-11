@@ -153,13 +153,7 @@ for i in range(epochs):
 training_data =[]
 for i in range(len(traind_scores)):
     for j in range(len(traind_scores[i])):
-        training_data.append(traind_scores[i][j])
-        
-        
-        
-        
-        
-        
+        training_data.append(traind_scores[i][j])  
 
 tests = []
 i = 0
@@ -176,7 +170,7 @@ for i in range(len(tests)):
         tests_new.append(tests[i][0][j])
         
         
-        
+'''The test results have a lagged value of 7, due to the batch size that is passed in'''      
 test_results = []
 for i in range(749):
     if i >= 701:
