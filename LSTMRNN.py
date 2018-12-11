@@ -17,7 +17,7 @@ scaled_dataset = scaler.fit_transform(data_to_use.reshape(-1, 1))
 
 
 '''
-    This function is used to create Features and Labels datasets. By windowing the data.
+This function is used to create Features and Labels datasets. By windowing the data.
     
     Input: data - dataset used in the project
            window_size - how many data points we are going to use to predict the next datapoint in the sequence 
@@ -41,7 +41,7 @@ def window_data(data, window_size):
     return X, y
     
 
-
+''' windowing the data with window data function'''
 X, y = window_data(scaled_dataset, 7)    
 
 X_train  = np.array(X[:700])
@@ -54,6 +54,8 @@ y_test = np.array(y[700:])
 epochs = 200
 batch_size = 7
 
+
+'''Defining the LSTM Cell parameters''' 
 def LSTM_cell(hidden_layer_size, batch_size,number_of_layers, dropout=True, dropout_rate=0.8):
     
     layer = tf.contrib.rnn.BasicLSTMCell(hidden_layer_size)
@@ -68,7 +70,7 @@ def LSTM_cell(hidden_layer_size, batch_size,number_of_layers, dropout=True, drop
     return cell, init_state
     
     
-    
+'''Defining the output layer, in this instance is a time series so we will get an output of a regression rather than a binary digit'''
 def output_layer(lstm_output, in_size, out_size):
     
     x = lstm_output[:, -1, :]
